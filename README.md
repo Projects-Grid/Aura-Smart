@@ -13,4 +13,4 @@
 - FontAwesome Icons
 
 ## 📸 عرض المشروع
-يمكنك فتح ملف `login.html` للبدء في تجربة النظام.
+يمكنك فتح ملف `[login.html](https://projects-grid.github.io/Aura-Smart/login.html)` للبدء في تجربة النظام.
