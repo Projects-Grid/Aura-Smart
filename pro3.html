@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | الإحصائيات والربط الحيوي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #050505;
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container { max-width: 900px; margin: auto; }
+
+        /* الرأس */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #6366f1;
+            padding: 8px 20px;
+            border: 1px solid #6366f1;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover { background: rgba(99, 102, 241, 0.1); }
+
+        /* بطاقة الربط النيونية */
+        .connect-card {
+            background: rgba(99, 102, 241, 0.03);
+            border: 2px dashed rgba(99, 102, 241, 0.3);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connect-card:hover {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.08);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .connect-card i {
+            font-size: 50px;
+            color: #6366f1;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+        }
+
+        #statusText { font-weight: bold; margin-bottom: 5px; }
+
+        /* شبكة الإحصائيات */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .stat-box:hover { transform: translateY(-5px); border-color: rgba(99, 102, 241, 0.3); }
+
+        .stat-box i { font-size: 35px; margin-bottom: 15px; }
+        .stat-box h2 { font-size: 2.8rem; margin-bottom: 5px; transition: 0.3s; }
+        .stat-box p { color: #64748b; font-size: 0.9rem; }
+
+        /* ألوان البيانات */
+        .hr-color { color: #ff4757; text-shadow: 0 0 15px rgba(255, 71, 87, 0.3); }
+        .step-color { color: #2ed573; text-shadow: 0 0 15px rgba(46, 213, 115, 0.3); }
+        .cal-color { color: #ffa502; text-shadow: 0 0 15px rgba(255, 165, 2, 0.3); }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>البيانات الحيوية</h1>
+            <a href="project.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة للقائمة</a>
+        </div>
+
+        <div class="connect-card" id="connectBtn">
+            <i class="fab fa-bluetooth"></i>
+            <h2 id="statusText">مزامنة الساعة الذكية</h2>
+            <p id="subStatus">اضغط للاتصال عبر تقنية BLE</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <i class="fas fa-heartbeat" style="color: #ff4757;"></i>
+                <h2 id="heartRate" class="hr-color">--</h2>
+                <p>نبض القلب (BPM)</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fas fa-walking" style="color: #2ed573;"></i>
+                <h2 id="stepCount" class="step-color">0</h2>
+                <p>إجمالي الخطوات</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fas fa-fire" style="color: #ffa502;"></i>
+                <h2 id="calories" class="cal-color">0</h2>
+                <p>السعرات (Kcal)</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const connectBtn = document.getElementById('connectBtn');
+        const statusText = document.getElementById('statusText');
+        const subStatus = document.getElementById('subStatus');
+        const heartRateDisplay = document.getElementById('heartRate');
+        const stepDisplay = document.getElementById('stepCount');
+        const calorieDisplay = document.getElementById('calories');
+
+        // --- 1. محرك المحاكاة (في حال فشل البلوتوث) ---
+        function startSimulation() {
+            statusText.innerText = "وضع المحاكاة نشط";
+            subStatus.innerText = "يتم عرض بيانات افتراضية للاختبار";
+            statusText.style.color = "#6366f1";
+
+            // محاكاة النبض
+            setInterval(() => {
+                const randomHR = Math.floor(Math.random() * (82 - 70 + 1)) + 70;
+                heartRateDisplay.innerText = randomHR;
+                
+                // حركة نبض خفيفة
+                heartRateDisplay.style.transform = "scale(1.1)";
+                setTimeout(() => heartRateDisplay.style.transform = "scale(1)", 150);
+            }, 1000);
+
+            // محاكاة الخطوات والسعرات
+            let steps = 5420;
+            let cals = 285.5;
+            setInterval(() => {
+                steps += Math.floor(Math.random() * 3);
+                cals += (Math.random() * 0.2);
+                stepDisplay.innerText = steps;
+                calorieDisplay.innerText = cals.toFixed(1);
+            }, 2000);
+        }
+
+        // --- 2. محرك البلوتوث الحقيقي ---
+        connectBtn.addEventListener('click', async () => {
+            try {
+                // فحص دعم البلوتوث في المتصفح
+                if (!navigator.bluetooth) {
+                    throw new Error("البلوتوث غير مدعوم");
+                }
+
+                statusText.innerText = "جاري البحث...";
+                
+                // طلب جهاز بلوتوث (يدعم خدمة نبض القلب)
+                const device = await navigator.bluetooth.requestDevice({
+                    filters: [{ services: ['heart_rate'] }]
+                });
+
+                statusText.innerText = "متصل بـ: " + device.name;
+                statusText.style.color = "#2ed573";
+                subStatus.innerText = "يتم استقبال البيانات الحقيقية الآن";
+
+                const server = await device.gatt.connect();
+                const service = await server.getPrimaryService('heart_rate');
+                const characteristic = await service.getCharacteristic('heart_rate_measurement');
+
+                await characteristic.startNotifications();
+                
+                characteristic.addEventListener('characteristicvaluechanged', (event) => {
+                    const value = event.target.value;
+                    const hr = value.getUint8(1); // القيمة الحقيقية للنبض
+                    heartRateDisplay.innerText = hr;
+                });
+
+            } catch (error) {
+                console.warn("تم تفعيل المحاكاة بسبب: ", error.message);
+                startSimulation(); // تفعيل الخطة البديلة فوراً
+            }
+        });
+    </script>
+
+</body>
+</html>

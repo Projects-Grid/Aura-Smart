@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | عن النظام والفلسفة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #050505;
+            color: #e2e8f0;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+
+        .container { max-width: 850px; margin: auto; }
+
+        .back-btn {
+            text-decoration: none;
+            color: #6366f1;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover { transform: translateX(5px); }
+
+        header {
+            border-right: 6px solid #6366f1;
+            padding-right: 20px;
+            margin-bottom: 50px;
+        }
+
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 3rem; color: white; letter-spacing: 3px; }
+        h2 { color: #6366f1; margin: 30px 0 15px; display: flex; align-items: center; gap: 10px; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 25px;
+            padding: 35px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        /* قسم معنى الاسم */
+        .meaning-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+            border-right: 4px solid #6366f1;
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin: 20px 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        p { margin-bottom: 15px; text-align: justify; }
+
+        strong { color: #6366f1; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="project.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i> العودة للوحة التحكم
+        </a>
+
+        <header>
+            <h1>AURA</h1>
+            <p>مستقبل الواجهات التفاعلية المرتبطة بالبيانات الحيوية</p>
+        </header>
+
+        <div class="card">
+            <h2><i class="fas fa-fingerprint"></i> لماذا اخترنا اسم "AURA"؟</h2>
+            <div class="meaning-box">
+                <p>كلمة <strong>Aura</strong> تعني لغوياً "الهالة" أو المجال الطاقي المحيط بالكائن الحي. </p>
+            </div>
+            <p>في مشروعنا، يمثل الاسم <strong>"الهالة الرقمية"</strong> للمستخدم. نحن لا نقدم مجرد واجهة عرض، بل نظاماً يستشعر وجودك المادي عبر الساعة الذكية ويترجم نبضات قلبك ونشاطك إلى بيئة بصرية تتنفس معك.</p>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-bullseye"></i> رؤية المشروع</h2>
+            <p>يهدف <strong>Aura</strong> إلى كسر الجمود في أنظمة الإدارة التقليدية عبر دمج تكنولوجيا <strong>IoT (إنترنت الأشياء)</strong> مع الويب. يركز النظام على:</p>
+            <ul>
+                <li><strong>الذكاء العاطفي للواجهات:</strong> تغيير ألوان النظام بناءً على حالة المستخدم الصحية.</li>
+                <li><strong>الارتباط اللحظي:</strong> مزامنة البيانات عبر تقنية البلوتوث (Web Bluetooth API).</li>
+                <li><strong>بساطة التصميم:</strong> استخدام نمط الـ Glassmorphism لتقليل التشتت البصري.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-code"></i> البناء البرمجي</h2>
+            <p>تم بناء هذا النظام باستخدام أحدث معايير الويب لضمان السرعة والأمان:</p>
+            <div class="tech-tags">
+                <span class="tag">HTML5 Semantic Elements</span>
+                <span class="tag">CSS3 Flexbox & Grid</span>
+                <span class="tag">JavaScript ES6+</span>
+                <span class="tag">Web Bluetooth API</span>
+                <span class="tag">FontAwesome Library</span>
+                <span class="tag">Responsive Design</span>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 50px;">
+            جميع الحقوق محفوظة &copy; مشروع تخرج Aura 2026
+        </p>
+    </div>
+
+</body>
+</html>

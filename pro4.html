@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Aura | مركز المساعدة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background: #050505;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .support-card {
+            width: 550px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #6366f1;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h1 { font-size: 1.8rem; margin-bottom: 10px; color: #fff; }
+        .divider { height: 1px; background: rgba(99, 102, 241, 0.2); margin: 25px 0; }
+
+        /* قسم التواصل المباشر (للمستخدم الجديد) */
+        .direct-contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .contact-method {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .contact-method:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .contact-method i { font-size: 20px; color: #6366f1; margin-bottom: 10px; display: block; }
+
+        /* نموذج المراسلة (للمستخدم المسجل) */
+        .support-form label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: #888; }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 15px;
+            background: #6366f1;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover { background: #4f46e5; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="support-card">
+        <a href="#" onclick="history.back(); return false;" class="back-btn">
+            <i class="fas fa-arrow-right"></i> العودة للخلف
+        </a>
+
+        <h1>مركز الدعم والمساعدة</h1>
+        <p style="color: #666; font-size: 0.9rem;">نحن هنا لضمان أفضل تجربة لك مع أورا.</p>
+
+        <div class="direct-contact">
+            <a href="https://wa.me/9665000000" class="contact-method">
+                <i class="fab fa-whatsapp"></i>
+                <span>واتساب مباشر</span>
+            </a>
+            <a href="mailto:info@aura.ai" class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <span>البريد الرسمي</span>
+            </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="support-form">
+            <p style="margin-bottom: 15px; font-weight: bold; font-size: 0.9rem;">أرسل لنا تفاصيل مشكلتك:</p>
+            <label>عنوان المشكلة</label>
+            <input type="text" placeholder="مثلاً: مشكلة في تسجيل الدخول">
+            
+            <label>وصف المشكلة</label>
+            <textarea rows="4" placeholder="اكتب بالتفصيل ما الذي حدث معك..."></textarea>
+            
+            <button class="send-btn">إرسال التذكرة البرمجية</button>
+        </div>
+    </div>
+
+</body>
+</html>
